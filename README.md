@@ -103,6 +103,32 @@
 ## 绘制 商品列表 页面基本结构并美化
 ![image](https://github.com/eamoney/vue-/blob/master/images/2.png)
 ![image](https://github.com/eamoney/vue-/blob/master/images/7.png)
+5.购物车的小球动画
+因为存在滚动的情况下 购物车小球添加的运动不能局限于一个死的像素上
+所以要动态获取小球的位置 再用底角的位置减去小球的位置 得出小球要动态移动的距离
+
+用到了生命钩子函数
+@before-enter
+@enter
+@after-enter
+主要是
+enter（el ,done）{
+1.获取小球的位置
+在vue中 为小球添加ref属性 ref相当于dom中的id属性 可以用来操作Dom属性
+添加ref属性的元素 可以在this.$refs中获取到
+用 bundingClientRect 方法 获取到小球的位置、
+ const ballposition = this.$refs.ball.bundingClientRect
+2.获取底角的位置
+ const badgeposition = document.getElentsById("badge").bundingClientRect
+3.动态获取小球要行走的距离
+ const x = badgeposition.left - ballposition .left 
+const y = badgeposition.top  - ballposition .top 
+4.写样式了
+el.style.transform =`translate(${x}px, ${y}px)`
+el.style.transition = 'all 0.5s cubic-bezier(.4,-0.3,1,.68)'
+done();
+
+}
 
 ## 尝试在手机上 去进行项目的预览和测试
 1. 要保证自己的手机可以正常运行；
