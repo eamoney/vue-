@@ -1,6 +1,6 @@
 # vue-商城
-制作首页App组件
-![image](https://github.com/eamoney/vue-/blob/master/images/1.png)
+制作首页App组件  
+![image](https://github.com/eamoney/vue-/blob/master/images/1.png)    
 1. 完成 Header 区域，使用的是 Mint-UI 中的Header组件
 2. 制作底部的 Tabbar 区域，使用的是 MUI 的 Tabbar.html
  + 在制作 购物车 小图标的时候，操作会相对多一些：
@@ -24,9 +24,9 @@
 
 ## 新闻资讯 页面 制作
 1. 绘制界面， 使用 MUI 中的 media-list.html
-2. 使用 vue-resource 获取数据
-3. 渲染真实数据
-![image](https://github.com/eamoney/vue-/blob/master/images/5.png)
+2. 使用 vue-resource 获取数据  
+3. 渲染真实数据  
+![image](https://github.com/eamoney/vue-/blob/master/images/5.png)  
 ## 实现 新闻资讯列表 点击跳转到新闻详情
 1. 把列表中的每一项改造为 router-link,同时，在跳转的时候应该提供唯一的Id标识符
 2. 创建新闻详情的组件页面  NewsInfo.vue
@@ -42,8 +42,8 @@
 4. 将注册子组件时候的，注册名称，以 标签形式，在页面中 引用即可
 
 ## 获取所有的评论数据显示到页面中
-1. getComments
-![image](https://github.com/eamoney/vue-/blob/master/images/6.png)
+1. getComments  
+![image](https://github.com/eamoney/vue-/blob/master/images/6.png)  
 ## 实现点击加载更多评论的功能
 1. 为加载更多按钮，绑定点击事件，在事件中，请求 下一页数据
 2. 点击加载更多，让 pageIndex++ , 然后重新调用 this.getComments() 方法重新获取最新一页的数据
@@ -59,7 +59,7 @@
  + 换一种思路： 当评论成功后，在客户端，手动拼接出一个 最新的评论对象，然后 调用 数组的 unshift 方法， 把最新的评论，追加到  data 中 comments 的开头；这样，就能 完美实现刷新评论列表的需求；
 
 ## 改造图片分析 按钮为 路由的链接并显示对应的组件页面
-![image](https://github.com/eamoney/vue-/blob/master/images/3.png)
+![image](https://github.com/eamoney/vue-/blob/master/images/3.png)  
 ## 绘制 图片列表 组件页面结构并美化样式
  1. 制作 顶部的滑动条
  2. 制作 底部的图片列表
@@ -88,47 +88,50 @@
 3. 渲染图片列表数据
 
 ### 实现了 图片列表的 懒加载改造和 样式美化
-![image](https://github.com/eamoney/vue-/blob/master/images/6.png)
+
 ## 实现了 点击图片 跳转到 图片详情页面
 1. 在改造 li 成 router-link 的时候，需要使用 tag 属性指定要渲染为 哪种元素
 
 ## 实现 详情页面的布局和美化，同时获取数据渲染页面
 
-## 实现 图片详情中 缩略图的功能
+## 实现 图片详情中 缩略图的功能  
+![image](https://github.com/eamoney/vue-/blob/master/images/6.png)  
 1. 使用 插件 vue-preview 这个缩略图插件
 2. 获取到所有的图片列表，然后使用 v-for 指令渲染数据
 3. 注意： img标签上的class不能去掉
-4. 注意： 每个 图片数据对象中，必须有 w 和 h 属性
-![image](https://github.com/eamoney/vue-/blob/master/images/4.png)
-## 绘制 商品列表 页面基本结构并美化
-![image](https://github.com/eamoney/vue-/blob/master/images/2.png)
-![image](https://github.com/eamoney/vue-/blob/master/images/7.png)
-5.购物车的小球动画
-因为存在滚动的情况下 购物车小球添加的运动不能局限于一个死的像素上
-所以要动态获取小球的位置 再用底角的位置减去小球的位置 得出小球要动态移动的距离
+4. 注意： 每个 图片数据对象中，必须有 w 和 h 属性  
+![image](https://github.com/eamoney/vue-/blob/master/images/4.png)  
+## 绘制 商品列表 页面基本结构并美化  
 
-用到了生命钩子函数
-@before-enter
-@enter
-@after-enter
-主要是
-enter（el ,done）{
-1.获取小球的位置
-在vue中 为小球添加ref属性 ref相当于dom中的id属性 可以用来操作Dom属性
-添加ref属性的元素 可以在this.$refs中获取到
-用 bundingClientRect 方法 获取到小球的位置、
- const ballposition = this.$refs.ball.bundingClientRect
-2.获取底角的位置
- const badgeposition = document.getElentsById("badge").bundingClientRect
-3.动态获取小球要行走的距离
- const x = badgeposition.left - ballposition .left 
-const y = badgeposition.top  - ballposition .top 
-4.写样式了
-el.style.transform =`translate(${x}px, ${y}px)`
-el.style.transition = 'all 0.5s cubic-bezier(.4,-0.3,1,.68)'
-done();
 
-}
+![image](https://github.com/eamoney/vue-/blob/master/images/2.png)  
+5.购物车的小球动画    
+ 因为存在滚动的情况下 购物车小球添加的运动不能局限于一个死的像素上  
+ 所以要动态获取小球的位置 再用底角的位置减去小球的位置 得出小球要动态移动的距离  
+
+ 用到了生命钩子函数  
+ @before-enter  
+ @enter  
+ @after-enter  
+ 主要是  
+ enter（el ,done）{  
+ 1.获取小球的位置  
+ 在vue中 为小球添加ref属性 ref相当于dom中的id属性 可以用来操作Dom属性  
+ 添加ref属性的元素 可以在this.$refs中获取到  
+ 用 bundingClientRect 方法 获取到小球的位置、  
+  const ballposition = this.$refs.ball.bundingClientRect  
+ 2.获取底角的位置  
+  const badgeposition = document.getElentsById("badge").bundingClientRect  
+ 3.动态获取小球要行走的距离  
+  const x = badgeposition.left - ballposition .left   
+ const y = badgeposition.top  - ballposition .top   
+ 4.写样式了  
+ el.style.transform =`translate(${x}px, ${y}px)`  
+ el.style.transition = 'all 0.5s cubic-bezier(.4,-0.3,1,.68)'  
+ done();  
+
+}  
+![image](https://github.com/eamoney/vue-/blob/master/images/7.png)  
 
 ## 尝试在手机上 去进行项目的预览和测试
 1. 要保证自己的手机可以正常运行；
