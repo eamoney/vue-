@@ -1,6 +1,12 @@
-# vue-商城
-制作首页App组件  
-![image](https://github.com/eamoney/vue-/blob/master/images/1.png)    
+# vue-商城    
+![image](https://github.com/eamoney/vue-/blob/master/images/1.png)  
+  
+首先该项目请求资源的是用了vue-resoure 该方式在Vue 2.20以上就已经不更新了所以很少用  
+所以可以将vue-resoure替换成axios  
+其次该项目只是用webpack+vue构建的  
+使用vue-cli工具构建  
+
+一 制作首页App组件  
 1. 完成 Header 区域，使用的是 Mint-UI 中的Header组件
 2. 制作底部的 Tabbar 区域，使用的是 MUI 的 Tabbar.html
  + 在制作 购物车 小图标的时候，操作会相对多一些：
@@ -12,36 +18,37 @@
  设置路由高亮
  点击 tabbar 中的路由链接，展示对应的路由组件
  制作首页轮播图布局
-## 加载首页轮播图数据
+ 加载首页轮播图数据
 1. 获取数据， 如何获取呢， 使用 vue-resource
 2. 使用 vue-resource 的 this.$http.get 获取数据
 3. 获取到的数据，要保存到 data 身上
 4. 使用 v-for 循环渲染 每个 item 项
 
-## 改造 九宫格 区域的样式
+改造 九宫格 区域的样式 ：在mui中找到九宫格的例子
+改造 新闻资讯 路由链接  
+1.在router.js中引入组件
+2.在routes下配置相关的路由
 
-## 改造 新闻资讯 路由链接
-
-## 新闻资讯 页面 制作
+ 新闻资讯 页面 制作
 1. 绘制界面， 使用 MUI 中的 media-list.html
 2. 使用 vue-resource 获取数据  
 3. 渲染真实数据  
 ![image](https://github.com/eamoney/vue-/blob/master/images/5.png)  
-## 实现 新闻资讯列表 点击跳转到新闻详情
+ 实现 新闻资讯列表 点击跳转到新闻详情
 1. 把列表中的每一项改造为 router-link,同时，在跳转的时候应该提供唯一的Id标识符
 2. 创建新闻详情的组件页面  NewsInfo.vue
 3. 在 路由模块中，将 新闻详情的 路由地址 和 组件页面对应起来
 
-## 实现 新闻详情 的 页面布局 和数据渲染
+ 实现 新闻详情 的 页面布局 和数据渲染
 
-## 单独封装一个 comment.vue 评论子组件
+ 单独封装一个 comment.vue 评论子组件
 1. 先创建一个 单独的 comment.vue 组件模板
 2. 在需要使用 comment 组件的 页面中，先手动 导入 comment 组件
  + `import comment from './comment.vue'`
 3. 在父组件中，使用 `components` 属性，将刚才导入 comment 组件，注册为自己的 子组件
 4. 将注册子组件时候的，注册名称，以 标签形式，在页面中 引用即可
 
-## 获取所有的评论数据显示到页面中
+ 获取所有的评论数据显示到页面中
 1. getComments  
 ![image](https://github.com/eamoney/vue-/blob/master/images/6.png)  
 ## 实现点击加载更多评论的功能
@@ -58,12 +65,12 @@
  + 如果调用 getComments 方法重新刷新评论列表的话，可能只能得到 最后一页的评论，前几页的评论获取不到
  + 换一种思路： 当评论成功后，在客户端，手动拼接出一个 最新的评论对象，然后 调用 数组的 unshift 方法， 把最新的评论，追加到  data 中 comments 的开头；这样，就能 完美实现刷新评论列表的需求；
 
-## 改造图片分析 按钮为 路由的链接并显示对应的组件页面
+改造图片分析 按钮为 路由的链接并显示对应的组件页面
 ![image](https://github.com/eamoney/vue-/blob/master/images/3.png)  
-## 绘制 图片列表 组件页面结构并美化样式
+绘制 图片列表 组件页面结构并美化样式
  1. 制作 顶部的滑动条
  2. 制作 底部的图片列表
-### 制作顶部滑动条的坑们：
+ 制作顶部滑动条的坑们：
  1. 需要借助于 MUI 中的 tab-top-webview-main.html 
  2. 需要把 slider 区域的 mui-fullscreen 类去掉
  3. 滑动条无法正常触发滑动，通过检查官方文档，发现这是JS组件，需要被初始化一下：
@@ -131,8 +138,19 @@
  done();  
 
 }  
+## 购物车页面  
 ![image](https://github.com/eamoney/vue-/blob/master/images/7.png)  
-
+由于购物车页面所属组件与商品添加购物车页面所属的组件并非父子组件的关系  
+因此在相互传值上就有一点的麻烦  
+所以采用Vuex  
+什么是Vuex?
+Vuex是Vue.js 为应用程序开发的一个状态管理模式 简单来讲就是一个共享数据的仓库  
+使用vuex  
+1.下载安装vuex 三种方式  
+2.在mian.js中注册  Vue.use  
+3.中mian.js中创建一个stroe 这个是vuex的核心  
+4.将stroe 挂载到vm实例上面   
+    
 ## 尝试在手机上 去进行项目的预览和测试
 1. 要保证自己的手机可以正常运行；
 2. 要保证 手机 和 开发项目的电脑 处于同一个 WIFI 环境中，也就是说 手机 可以 访问到 电脑的 IP
