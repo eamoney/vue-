@@ -2,9 +2,9 @@
 ![image](https://github.com/eamoney/vue-/blob/master/images/1.png)  
   
 首先该项目请求资源的是用了vue-resoure 该方式在Vue 2.20以上就已经不更新了所以很少用  
-所以可以将vue-resoure替换成axios  
+所以可以将vue-resoure替换成axios方式请求  
 其次该项目只是用webpack+vue构建的  
-使用vue-cli工具构建  
+也可以使用vue-cli工具构建  
 
 一 制作首页App组件  
 1. 完成 Header 区域，使用的是 Mint-UI 中的Header组件
